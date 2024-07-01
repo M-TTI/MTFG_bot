@@ -25,7 +25,7 @@ public class Program
         _client.Log += Log;
         Console.WriteLine("loging");
         await _client.LoginAsync(TokenType.Bot,
-            "token XD");
+            Credentials.TOKEN);
         Console.WriteLine("starting");
         await _client.StartAsync();
         Console.WriteLine(_client.Status);
