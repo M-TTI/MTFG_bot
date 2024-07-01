@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35013.160
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MTFG_bot", "MTFG_bot\MTFG_bot.csproj", "{614DF7D9-063F-4226-A74E-5E50C1196235}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{614DF7D9-063F-4226-A74E-5E50C1196235}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{614DF7D9-063F-4226-A74E-5E50C1196235}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{614DF7D9-063F-4226-A74E-5E50C1196235}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{614DF7D9-063F-4226-A74E-5E50C1196235}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1B9C1000-4B15-4D8F-B740-EE6E63FAF5EC}
+	EndGlobalSection
+EndGlobal
