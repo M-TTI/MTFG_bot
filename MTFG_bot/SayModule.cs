@@ -15,6 +15,11 @@ namespace MTFG_bot
         public Task SayAsync([Remainder][Summary("The text to echo")] string echo)
             => ReplyAsync(echo);
 
-        // ReplyAsync is a method on ModuleBase 
+
+        [Command("quoi")]
+        [Summary("feur.")]
+        public Task FeurAsync()
+            => ReplyAsync("feur");
+
     }
 }

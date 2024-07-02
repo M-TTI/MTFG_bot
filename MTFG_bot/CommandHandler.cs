@@ -31,12 +31,13 @@ namespace MTFG_bot
         {
             var message = MessageParam as SocketUserMessage;
             if (message == null) return;
-            await Program.Log(new Discord.LogMessage(Discord.LogSeverity.Verbose, "Manual", message.Content.ToString()));
 
             int ArgPos = 0;
 
             // If there's no prefix or the message is from a bot then nothing happens
             if (message.Author.IsBot) return;
+
+            await Program.Log(new Discord.LogMessage(Discord.LogSeverity.Verbose, message.Author.ToString(), message.Content.ToString()));
 
             var context = new SocketCommandContext(client, message);
 
