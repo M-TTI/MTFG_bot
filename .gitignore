@@ -1,6 +1,5 @@
 # User Credentials
-MTFG_bot/Credentials.cs
-
+.env
 
 
 ## Ignore Visual Studio temporary files, build results, and

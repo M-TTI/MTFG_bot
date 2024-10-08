@@ -1,13 +1,13 @@
-﻿using Discord.WebSocket;
-using Discord;
-using System.Runtime.InteropServices;
+﻿using Discord;
 using Discord.Commands;
-using MTFG_bot;
+using Discord.WebSocket;
+
+namespace MTFG_bot;
 
 public class Program
 {
-    private static DiscordSocketClient _client;
-    private static CommandService _commandService;
+    private static DiscordSocketClient? _client;
+    private static CommandService? _commandService;
 
     public static async Task Main()
     {
@@ -22,10 +22,11 @@ public class Program
         var _commandHandler = new CommandHandler(_client, _commandService);
         await _commandHandler.InstallCommandsAsync();
         
+        Credentials.LoadToken(".env");
         _client.Log += Log;
-        Console.WriteLine("loging");
+        Console.WriteLine("logging");
         await _client.LoginAsync(TokenType.Bot,
-            Credentials.TOKEN);
+            Environment.GetEnvironmentVariable("TOKEN"));
         Console.WriteLine("starting");
         await _client.StartAsync();
         Console.WriteLine(_client.Status);
