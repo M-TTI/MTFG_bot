@@ -8,10 +8,10 @@ public class Credentials
             throw new FileNotFoundException("File not found", filePath);
         foreach (var line in File.ReadAllLines(filePath))
         {
-            if (string.IsNullOrWhiteSpace(line) || line.StartsWith("#"))
+            if (string.IsNullOrWhiteSpace(line) || line.StartsWith('#'))
                 continue;
             
-            var parts = line.Split("=");
+            var parts = line.Split('=');
             if (parts.Length != 2)
                 continue;
             
