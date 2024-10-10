@@ -11,7 +11,7 @@ public class Program
 
     public static async Task Main()
     {
-        var config = new DiscordSocketConfig()
+        var config = new DiscordSocketConfig
         {
             GatewayIntents = GatewayIntents.All
         };
@@ -30,6 +30,11 @@ public class Program
         Console.WriteLine("starting");
         await _client.StartAsync();
         Console.WriteLine(_client.Status);
+        _client.Ready += () =>
+        {
+            Console.WriteLine("Ready"); 
+            return Task.CompletedTask;
+        };
 
         // Block this task until the program is closed.
         await Task.Delay(-1);
