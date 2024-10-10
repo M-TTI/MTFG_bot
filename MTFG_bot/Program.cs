@@ -18,10 +18,10 @@ public class Program
 
         _client = new DiscordSocketClient(config);
         _commandService = new CommandService();
-        
+
         var _commandHandler = new CommandHandler(_client, _commandService);
         await _commandHandler.InstallCommandsAsync();
-        
+
         Credentials.LoadToken(".env");
         _client.Log += Log;
         Console.WriteLine("logging");
@@ -29,11 +29,12 @@ public class Program
             Environment.GetEnvironmentVariable("TOKEN"));
         Console.WriteLine("starting");
         await _client.StartAsync();
-        Console.WriteLine(_client.Status);
+        _client.Ready += () => { Console.WriteLine("Bot is ready"); return Task.CompletedTask; };
 
-        // Block this task until the program is closed.
-        await Task.Delay(-1);
+            // Block this task until the program is closed.
+            await Task.Delay(-1);
     }
+
     public static Task Log(LogMessage msg)
     {
         Console.WriteLine(msg.ToString());
