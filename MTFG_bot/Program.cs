@@ -1,6 +1,7 @@
 ﻿using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
+using DotNetEnv;
 
 namespace MTFG_bot;
 
@@ -22,11 +23,14 @@ public class Program
         var _commandHandler = new CommandHandler(_client, _commandService);
         await _commandHandler.InstallCommandsAsync();
         
-        Credentials.LoadToken("../../../../.env");
+        DotNetEnv.Env.Load();
+        var token = Environment.GetEnvironmentVariable("TOKEN");
+        if (String.IsNullOrEmpty(token)){
+            throw new ArgumentException("token was not found; setup a .env file at the root of the project");
+        }
         _client.Log += Log;
         Console.WriteLine("logging");
-        await _client.LoginAsync(TokenType.Bot,
-            Environment.GetEnvironmentVariable("TOKEN"));
+        await _client.LoginAsync(TokenType.Bot, token);
         Console.WriteLine("starting");
         await _client.StartAsync();
         Console.WriteLine(_client.Status);
