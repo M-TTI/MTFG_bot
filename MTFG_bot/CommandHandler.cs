@@ -5,7 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using MTFG_bot;
 
 namespace MTFG_bot
 {
@@ -31,10 +33,15 @@ namespace MTFG_bot
         {
             var message = MessageParam as SocketUserMessage;
             if (message == null) return;
+            var msgString = message.Content.ToLower();
+            var match = Regex.Match(msgString, @"quoi");
+            if (match.Success)
+            {
+                
+            }
 
-            int ArgPos = 0;
-
-            // If there's no prefix or the message is from a bot then nothing happens
+            int argPos = 0;
+            
             if (message.Author.IsBot) return;
 
             await Program.Log(new Discord.LogMessage(Discord.LogSeverity.Verbose, message.Author.ToString(), message.Content.ToString()));
@@ -43,7 +50,7 @@ namespace MTFG_bot
 
             await commands.ExecuteAsync(
                 context: context,
-                argPos: ArgPos,
+                argPos: argPos,
                 services: null
                 );
         }

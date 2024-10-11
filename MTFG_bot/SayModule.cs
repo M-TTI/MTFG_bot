@@ -20,6 +20,5 @@ namespace MTFG_bot
         [Summary("feur.")]
         public Task FeurAsync()
             => ReplyAsync("feur");
-
     }
 }
