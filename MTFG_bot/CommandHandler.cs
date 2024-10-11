@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Discord;
 using MTFG_bot;
 
 namespace MTFG_bot
@@ -37,7 +38,7 @@ namespace MTFG_bot
             var match = Regex.Match(msgString.ToLower(), @"q(\s*)u(\s*)[o0°](\s*)[il1|]");
             if (match.Success)
             {
-                await MessageParam.Channel.SendMessageAsync("feur.");
+                await MessageParam.Channel.SendMessageAsync("feur.", messageReference: new MessageReference(MessageParam.Id, MessageParam.Channel.Id));
             }
 
             int argPos = 0;
