@@ -22,7 +22,7 @@ public class Program
         var _commandHandler = new CommandHandler(_client, _commandService);
         await _commandHandler.InstallCommandsAsync();
         
-        Credentials.LoadToken("../../../../.env");
+        Credentials.LoadToken("../../../.env");
         _client.Log += Log;
         Console.WriteLine("logging");
         await _client.LoginAsync(TokenType.Bot,
