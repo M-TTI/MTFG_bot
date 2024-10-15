@@ -15,11 +15,11 @@ namespace MTFG_bot {
         [Summary("Rolls two dice.")]
         public async Task RollAsync()
         {
-            var task = ReplyAsync($"{RollDiceEmoji()} {RollDiceEmoji()}");
             var disposable = Context.Channel.EnterTypingState();
+            var msg = $"{RollDiceEmoji()} {RollDiceEmoji()}";
 
-            await task;
             disposable.Dispose();
+            await ReplyAsync(msg);
         }
 
         private string RollDiceEmoji() {
