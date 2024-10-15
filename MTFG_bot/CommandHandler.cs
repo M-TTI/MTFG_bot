@@ -30,17 +30,17 @@ namespace MTFG_bot
             await commands.AddModulesAsync(assembly: Assembly.GetEntryAssembly(), services: null);
         }
 
-        private async Task HandleCommandAsync(SocketMessage MessageParam)
+        private async Task HandleCommandAsync(SocketMessage messageParam)
         {
-            var message = MessageParam as SocketUserMessage;
+            var message = messageParam as SocketUserMessage;
             if (message == null) return;
             var msgString = message.Content.ToLower();
             var match = Regex.Match(msgString.ToLower(), @"q(\s*)(u+)(\s*)([o0°]+)(\s*)[il1|]");
             if (match.Success)
             {
-                await MessageParam.Channel.SendMessageAsync("feur.", messageReference: new MessageReference(MessageParam.Id, MessageParam.Channel.Id));
+                await messageParam.Channel.SendMessageAsync("feur.", messageReference: new MessageReference(messageParam.Id, messageParam.Channel.Id));
             }
-
+            
             int argPos = 0;
             
             if (message.Author.IsBot) return;
