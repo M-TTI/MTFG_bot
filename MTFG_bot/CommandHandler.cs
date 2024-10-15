@@ -35,7 +35,7 @@ namespace MTFG_bot
             var message = MessageParam as SocketUserMessage;
             if (message == null) return;
             var msgString = message.Content.ToLower();
-            var match = Regex.Match(msgString.ToLower(), @"q(\s*)u(\s*)[o0°](\s*)[il1|]");
+            var match = Regex.Match(msgString.ToLower(), @"q(\s*)(u+)(\s*)([o0°]+)(\s*)[il1|]");
             if (match.Success)
             {
                 await MessageParam.Channel.SendMessageAsync("feur.", messageReference: new MessageReference(MessageParam.Id, MessageParam.Channel.Id));
