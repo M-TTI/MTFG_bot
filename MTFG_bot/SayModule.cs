@@ -14,12 +14,5 @@ namespace MTFG_bot
         [Summary("Echoes a message.")]
         public Task SayAsync([Remainder][Summary("The text to echo")] string echo)
             => ReplyAsync(echo);
-
-
-        [Command("quoi")]
-        [Summary("feur.")]
-        public Task FeurAsync()
-            => ReplyAsync("feur");
-
     }
 }
