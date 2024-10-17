@@ -33,7 +33,11 @@ namespace MTFG_bot
         private async Task HandleCommandAsync(SocketMessage messageParam)
         {
             var message = messageParam as SocketUserMessage;
+            
             if (message == null) return;
+            
+            if (message.Author.IsBot) return;
+            
             var msgString = message.Content.ToLower();
             var match = Regex.Match(msgString.ToLower(), @"q(\s*)(u+)(\s*)([o0°]+)(\s*)[il1|]");
             if (match.Success)
@@ -43,9 +47,8 @@ namespace MTFG_bot
             
             int argPos = 0;
             
-            if (message.Author.IsBot) return;
 
-            await Program.Log(new Discord.LogMessage(Discord.LogSeverity.Verbose, message.Author.ToString(), message.Content.ToString()));
+            await Program.Log(new LogMessage(LogSeverity.Verbose, message.Author.ToString(), message.Content));
 
             var context = new SocketCommandContext(client, message);
 
