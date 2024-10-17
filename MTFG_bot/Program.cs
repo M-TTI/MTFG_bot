@@ -23,10 +23,11 @@ public class Program
         var _commandHandler = new CommandHandler(_client, _commandService);
         await _commandHandler.InstallCommandsAsync();
         
-        DotNetEnv.Env.Load();
+        Env.Load("../../../.env");
         var token = Environment.GetEnvironmentVariable("TOKEN");
-        if (String.IsNullOrEmpty(token)){
-            throw new ArgumentException("token was not found; setup a .env file at the root of the project");
+        if (string.IsNullOrEmpty(token)){
+            Console.WriteLine("token was not found; set up a .env file at the root of the project");
+            return;
         }
         _client.Log += Log;
         Console.WriteLine("logging");
